@@ -20,8 +20,8 @@ main() {
         # link binary into bin
         findAndLinkExe "$exeName"
       done < <(\
-        (grep -P '^executable\s+[a-zA-Z0-9_-]+$' "$cabalFile" || echo '') \
-        | sed -r 's/^executable\s+//')
+        (grep -Pi '^executable\s+[a-zA-Z0-9_-]+$' "$cabalFile" || echo '') \
+        | sed -r 's/^executable\s+//i')
     done
     if [ $is_sourced -eq 1 ]; then
       # adjust PATH
